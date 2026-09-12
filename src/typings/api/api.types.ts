@@ -114,6 +114,11 @@ export interface ApiResponse {
   statusCode?: number
 
   /**
+   * Indicates whether HTTP headers have been sent.
+   */
+  headersSent?: boolean
+
+  /**
    * Writes response status and headers.
    */
   writeHead(
@@ -447,7 +452,10 @@ export interface ApiNodelinkServer {
    * Loaded configuration.
    */
   options: NodelinkConfig & {
-    server: NodelinkConfig['server'] & { maxBodySize?: number }
+    server: NodelinkConfig['server'] & {
+      maxBodySize?: number
+      bodyTimeout?: number
+    }
   }
 
   /**
